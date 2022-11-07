@@ -48,19 +48,18 @@ document.querySelector("#skip").addEventListener("click", function() {
 });
 
 document.querySelector("#mute").addEventListener("click", function() {
-	if (video.volume != "0.0") {
-		tempVol = video.volume;
-		
-		video.volume = "0.0";
-		document.querySelector('#slider').value = video.volume * 100;
-		document.querySelector('#volume').textContent = video.volume * 100 + "%";
-		console.log("Volume: " + video.volume);
-	} else {
-		video.volume = tempVol;
-		document.querySelector('#slider').value = video.volume * 100;
-		document.querySelector('#volume').textContent = video.volume * 100 + "%";
-		console.log("Volume: " + video.volume);
+	if (video.muted){
+		video.muted = false;
+		console.log("Volume Unmuted");
+		document.querySelector("#mute").innerHTML = "Mute";
 	}
+
+	else{
+		video.muted = true;
+		console.log("Volume muted");
+		document.querySelector("#mute").innerHTML = "Unmute";
+	}
+	
 });
 
 document.querySelector("#slider").addEventListener("change", function() {
